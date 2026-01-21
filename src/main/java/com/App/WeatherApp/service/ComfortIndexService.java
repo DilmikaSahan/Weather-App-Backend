@@ -24,7 +24,7 @@ public class ComfortIndexService {
     }
 
     @Cacheable(value = "comfortIndexCache")
-    public List<CityWeatherInfo> getComfortIndex() {
+    public List<CityWeatherInfo> getRankedCities() {
         List<CityWeatherInfo> results = cityDataService.getAllCities()
                 .stream()
                 .map(city -> {

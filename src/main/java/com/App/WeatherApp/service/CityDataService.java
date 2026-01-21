@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class CityDataService {
     private final JsonParser jsonParser;
-    private static final String CITY_FILE = "cities.json";
+    private static final String CITY_FILE = "data/cities.json";
 
     public CityDataService(JsonParser jsonParser) {
         this.jsonParser = jsonParser;
@@ -20,7 +20,7 @@ public class CityDataService {
         try {
             return jsonParser.parseCitiesJson(CITY_FILE);
         } catch (Exception e){
-            throw new CityNotFoundException("Unable to load cities.json",e);
+            throw new RuntimeException(e.getMessage());
         }
     }
 }

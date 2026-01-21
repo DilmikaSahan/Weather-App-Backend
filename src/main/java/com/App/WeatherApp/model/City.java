@@ -1,5 +1,6 @@
 package com.App.WeatherApp.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,8 +9,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class City {
-    private String CityCode;
-    private String CityName;
-    private String Temp;    // Optional, API will overwrite
-    private String Status;  // Optional, API will overwrite
+    @JsonProperty("CityCode")
+    private String cityCode;
+
+    @JsonProperty("CityName")
+    private String cityName;
+
+    @JsonProperty("Temp")
+    private String temp;
+
+    @JsonProperty("Status")
+    private String status;
 }
