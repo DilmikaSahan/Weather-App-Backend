@@ -1,4 +1,4 @@
-package com.App.WeatherApp.Config;
+package com.App.WeatherApp.config;
 import io.netty.channel.ChannelOption;
 import io.netty.handler.timeout.ReadTimeoutHandler;
 import io.netty.handler.timeout.WriteTimeoutHandler;

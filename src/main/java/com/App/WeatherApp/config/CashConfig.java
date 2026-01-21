@@ -1,4 +1,4 @@
-package com.App.WeatherApp.Config;
+package com.App.WeatherApp.config;
 
 import com.github.benmanes.caffeine.cache.Caffeine;
 import org.springframework.cache.CacheManager;
