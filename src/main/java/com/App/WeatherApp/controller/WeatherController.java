@@ -28,6 +28,8 @@ public class WeatherController {
                     dto.setCityName(city.getCityName());
                     dto.setComfortScore(city.getComfortScore());
                     dto.setRank(city.getRank());
+                    dto.setDescription(city.getWeatherData().getDescription());
+                    dto.setTemperature(city.getWeatherData().getTemperature());
                     return dto;
                 })
                 .toList();

@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 public class CityRankingDTO {
     private String cityCode;
     private String cityName;
+    private String description;
+    private double temperature;
     private double comfortScore;
     private int rank;
 }
