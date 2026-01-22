@@ -13,5 +13,9 @@ public class CityRankingDTO {
     private String description;
     private double temperature;
     private double comfortScore;
+    private int humidity;
+    private double windSpeed;
+    private int visibility;
     private int rank;
+    private String icon;
 }

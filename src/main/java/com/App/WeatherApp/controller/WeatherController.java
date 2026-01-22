@@ -30,6 +30,10 @@ public class WeatherController {
                     dto.setRank(city.getRank());
                     dto.setDescription(city.getWeatherData().getDescription());
                     dto.setTemperature(city.getWeatherData().getTemperature());
+                    dto.setHumidity(city.getWeatherData().getHumidity());
+                    dto.setWindSpeed(city.getWeatherData().getWindSpeed());
+                    dto.setVisibility(city.getWeatherData().getVisibility()/1000); //divide by 1000 for convert m to Km
+                    dto.setIcon(city.getWeatherData().getIcon());
                     return dto;
                 })
                 .toList();

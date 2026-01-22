@@ -15,4 +15,5 @@ public class WeatherData {
     private int pressure;        // hPa
     private int visibility;      // meters
     private String description;  // Weather description
+    private String icon;
 }

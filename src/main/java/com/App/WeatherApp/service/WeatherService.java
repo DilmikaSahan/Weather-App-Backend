@@ -47,6 +47,7 @@ public class WeatherService {
         data.setWindSpeed(r.wind.speed);
         data.setCloudiness(r.clouds.all);
         data.setDescription(r.weather.get(0).description);
+        data.setIcon(r.weather.get(0).icon);
         return data;
     }
     static class OpenWeatherResponse {
@@ -72,6 +73,7 @@ public class WeatherService {
 
         static class Weather {
             public String description;
+            public String icon;
         }
     }
 }

@@ -56,14 +56,13 @@ public class ComfortIndexCalculator {
                 (cloudScore * cloudWeight);
 
         // Clamp to 0-100
-        return Math.max(0, Math.min(100, comfortIndex));
+        return round(Math.max(0, Math.min(100, comfortIndex)));
 
     }
     private double normalizeTemperature(double temp) {
         // Assuming ideal temperature = 22°C, penalize deviation
-        double tempInCelsius = temp-273.15; //convert temp Kelvin → Celsius
         double ideal = 22.0;
-        double diff = Math.abs(tempInCelsius - ideal);
+        double diff = Math.abs(temp - ideal);
         double score = 100 - (diff * 4);    //Penalty: -5 points for every 1 degree away from 22°C
         return Math.max(0, Math.min(100, score));
     }
@@ -81,5 +80,8 @@ public class ComfortIndexCalculator {
         if(cloudiness>=30  && cloudiness<=50) return 100;   // 30%-50% comfortable range
         double diff = (cloudiness<30)?(30-cloudiness):(50-cloudiness);
         return Math.max(0, 100 - (diff * 1.5));
+    }
+    private double round(double value){
+        return Math.round(value * 10.0) / 10.0;
     }
 }
