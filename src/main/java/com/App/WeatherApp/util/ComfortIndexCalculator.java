@@ -46,8 +46,9 @@ public class ComfortIndexCalculator {
     }
     private double normalizeTemperature(double temp) {
         // Assuming ideal temperature = 22°C, penalize deviation
+        double tempInCelsius = temp-273.15; //convert temp Kelvin → Celsius
         double ideal = 22.0;
-        double diff = Math.abs(temp - ideal);
+        double diff = Math.abs(tempInCelsius - ideal);
         double score = 100 - (diff * 3); // every degree off reduces score
         return Math.max(0, Math.min(100, score));
     }
