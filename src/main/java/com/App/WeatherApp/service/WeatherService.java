@@ -21,11 +21,11 @@ public class WeatherService {
     @Value("${openweathermap.api.base-url}")
     private String baseUrl;
 
-    @Cacheable(value = "weatherCache",key="#city.CityCOde")
-    public WeatherData fetchWeather(City cIty){
+    @Cacheable(value = "weatherCache",key="#city.cityCode")
+    public WeatherData fetchWeather(City city){
         try {
             var response = webClient.get()
-                    .uri(baseUrl+"/weather?id={id}&appid={key}&units=metric", cIty.getCityCode(),apiKey)
+                    .uri(baseUrl+"/weather?id={id}&appid={key}&units=metric", city.getCityCode(),apiKey)
                     .retrieve()
                     .bodyToMono(OpenWeatherResponse.class)
                     .block();
@@ -34,7 +34,7 @@ public class WeatherService {
             }
             return mapToWeatherData(response);
         }catch (Exception e){
-            throw new WeatherApiException("Failed to fetch weather for "+cIty.getCityName(),e);
+            throw new WeatherApiException("Failed to fetch weather for "+city.getCityName(),e);
 
         }
     }

@@ -18,7 +18,6 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.reactive.function.client.WebClient;
 
 import java.util.List;
 @Configuration
@@ -30,17 +29,15 @@ public class SecurityConfig {
     @Value("${auth0.issuer}")
     private String issuer;
 
-    /**
-     * Configure security filter chain with JWT authentication
-     */
+
+     // Configure security filter chain with JWT authentication
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests(auth -> auth
                         // Public endpoints - no authentication required
                         .requestMatchers("/actuator/health", "/actuator/info").permitAll()
-
-                        // All other endpoints require authentication
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> oauth2
@@ -58,12 +55,11 @@ public class SecurityConfig {
         return http.build();
     }
 
-    /**
-     * Configure JWT decoder with Auth0 validation
-     */
+
+     //Configure JWT decoder with Auth0 validation
+
     @Bean
     public JwtDecoder jwtDecoder() {
-        // Custom RestTemplate with timeouts
         SimpleClientHttpRequestFactory requestFactory = new SimpleClientHttpRequestFactory();
         requestFactory.setConnectTimeout(5000); // 5s connect timeout
         requestFactory.setReadTimeout(10000);   // 10s read timeout
@@ -83,9 +79,9 @@ public class SecurityConfig {
         jwtDecoder.setJwtValidator(withAudience);
         return jwtDecoder;
     }
-    /**
-     * Configure JWT authentication converter for extracting authorities
-     */
+
+     //Configure JWT authentication converter for extracting authorities
+
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
         JwtGrantedAuthoritiesConverter converter = new JwtGrantedAuthoritiesConverter();
@@ -97,9 +93,9 @@ public class SecurityConfig {
         return jwtConverter;
     }
 
-    /**
-     * Configure CORS to allow React frontend
-     */
+
+     //Configure CORS to allow React frontend
+
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
@@ -115,9 +111,9 @@ public class SecurityConfig {
         return source;
     }
 
-    /**
-     * Custom validator for Auth0 audience claim
-     */
+
+     //Custom validator for Auth0 audience claim
+
     static class AudienceValidator implements OAuth2TokenValidator<Jwt> {
         private final String audience;
 
