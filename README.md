@@ -1,6 +1,6 @@
 # 🌦 Weather Comfort Index Application
 
-A Spring Boot backend application that integrates with the OpenWeatherMap API to calculate a **Weather Comfort Index**, rank cities based on comfort level, and provide **cached current weather and forecast data** for frontend applications. (<a href="https://github.com/DilmikaSahan/Weather-App-Frontend/blob/main/README.md">Weather App Frontend</a>)
+A Spring Boot backend application that integrates with the OpenWeatherMap API to calculate a **Weather Comfort Index**, rank cities based on comfort level, and provide **cached current weather and forecast data** for frontend applications. (<a href="https://github.com/DilmikaSahan/Weather-App-Frontend">Weather App Frontend</a>)
 
 ---
 
