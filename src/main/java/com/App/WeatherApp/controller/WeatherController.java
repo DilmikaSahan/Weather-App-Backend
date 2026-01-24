@@ -1,8 +1,12 @@
 package com.App.WeatherApp.controller;
 
 import com.App.WeatherApp.dto.CityRankingDTO;
+import com.App.WeatherApp.dto.ForecastDto;
+import com.App.WeatherApp.service.CityDataService;
 import com.App.WeatherApp.service.ComfortIndexService;
+import com.App.WeatherApp.service.WeatherForecastService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,12 +17,16 @@ import java.util.List;
 @RequestMapping("/api/v1/weather")
 public class WeatherController {
     private final ComfortIndexService comfortIndexService;
+    private final WeatherForecastService weatherForecastService;
+    private final CityDataService cityDataService;
 
-    public WeatherController(ComfortIndexService comfortIndexService) {
+    public WeatherController(ComfortIndexService comfortIndexService, WeatherForecastService weatherForecastService, CityDataService cityDataService) {
         this.comfortIndexService = comfortIndexService;
+        this.weatherForecastService = weatherForecastService;
+        this.cityDataService = cityDataService;
     }
 
-    @GetMapping("/comfort-index")
+    @GetMapping("/weather-info")
     public List<CityRankingDTO> getComfortIndexRanking() {
         return comfortIndexService.getRankedCities()
                 .stream()
@@ -37,5 +45,10 @@ public class WeatherController {
                     return dto;
                 })
                 .toList();
+    }
+
+    @GetMapping("getForecast/{cityCode}")
+    public ForecastDto getForecast(@PathVariable String cityCode) {
+        return weatherForecastService.getForecastByCityCode(cityCode);
     }
 }
