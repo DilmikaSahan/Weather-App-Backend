@@ -31,7 +31,7 @@ public class ComfortIndexCalculator {
      *      Humidity : in range 30% - 60%, score = 100
      *      WindSpeed : in range 1.5 - 4.0, score = 100
      *      Cloudiness : in range 30% - 50%, score = 100
-     * Comfort_Index_Score = (100 - (Td*4))Tw + (100 - (Hd*4))Hw + (100 - (Wd*4))Ww + (100 - (Cd*4))Cw
+     * Comfort_Index_Score = ((100 - (Td*4)Tw) + (100 - (Hd*4)Hw) + (100 - (Wd*4)Ww) + (100 - (Cd*4)Cw))
      * Td - Temperature difference
      * Hd - Humidity difference
      * Wd - WindSpeed difference
